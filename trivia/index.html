@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", buttoninit);
+
+            function buttoninit() {
+                const btns = document.querySelectorAll(".trivia");
+                for (let i = 0; i < btns.length; i++) {
+                    btns[i].addEventListener("click", checkanswer);
+                }
+            };
+
+            function checkanswer() {
+                if (this.value == "wrong") {
+                    document.getElementById("trivresult").innerHTML = "Incorrect!";
+                    document.getElementById("trivresult").style.color = "Red";
+                    this.style.background = "Red";
+                    this.removeEventListener("click", checkanswer);
+                } else {
+                    let trivresult = document.getElementById("trivresult")
+                    trivresult.innerHTML = "Correct!";
+                    trivresult.style.color = "Green";
+                    this.style.background = "Green";
+                    buttonconc();
+                }
+            }
+
+            function buttonconc() {
+                const btns = document.querySelectorAll(".trivia");
+                for (let i = 0; i < btns.length; i++) {
+                    btns[i].removeEventListener("click", checkanswer);
+                }
+            }
+
+            function checkfree() {
+                let freeanswer = document.getElementById("freeinput");
+                let freeresult = document.getElementById("freeresult");
+                if (freeanswer.value == "12") {
+                    freeresult.innerHTML = "Correct!";
+                    document.querySelector("input[type=submit]").removeAttribute("onclick");
+                    freeresult.style.color = "Green";
+                    freeanswer.readOnly = true;
+                    freeanswer.style.background = "Green";
+                } else {
+                    freeanswer.style.background = "Red";
+                    freeresult.style.color = "Red";
+                    freeresult.innerHTML = "Incorrect!";
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the top export of Australia?</h3>
+                <h4 id="trivresult"></h4>
+                <button class="trivia" value="wrong">Wheat</button>
+                <button class="trivia" value="wrong">Gold</button>
+                <button class="trivia" value="right">Iron</button>
+                <button class="trivia" value="wrong">Coal</button>
+                <button class="trivia" value="wrong">Petroleum</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>How many months are in a year?</h3>
+                <h4 id="freeresult"></h4>
+                <input type="text" id="freeinput">
+                <input type="submit" onclick="checkfree()">
+            </div>
+        </div>
+    </body>
+
+</html>

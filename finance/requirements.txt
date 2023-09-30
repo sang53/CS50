@@ -1,0 +1,15 @@
+cs50
+Flask
+Flask-Session
+requests
+
+CREATE TABLE transactions(
+    tid INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    symbol TEXT NOT NULL,
+    price NUMERIC NOT NULL,
+    shares NUMERIC NOT NULL,
+    ts DATETIME NOT NULL DEFAULT (datetime(CURRENT_TIMESTAMP, 'localtime')),
+    FOREIGN KEY (id) REFERENCES users (id)
+);

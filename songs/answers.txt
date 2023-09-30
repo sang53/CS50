@@ -1,0 +1,19 @@
+If songs.db contains the top 100 songs of one listener from 2018, how would you characterize their audio aura?
+
+MIN(energy) = 0.296     MIN(danceability) = 0.258   MIN(valence) = 0.080
+AVG(energy) = 0.659     AVG(danceability) = 0.716   AVG(valence) = 0.484
+MAX(energy) = 0.909     MAX(danceability) = 0.964   MAX(valence) = 0.931
+
+- Listens to songs that are popular in a variety of genres & moods
+- If taking averages, their audio aura is dancing songs of moderate energy and valence.
+- Overall, listens to songs that have more energy & danceability.
+
+Hypothesize about why the way you’ve calculated this aura might not be very representative of the listener.
+- This list is only the listener's top 100 songs
+- There is no data of how many times these songs were played
+- Only using min/max & average does not take into account the distribution/variance
+
+What better ways of calculating this aura would you propose?
+- Create song categories according to energy, valence, danceability (+ other qualities)
+- Assign "aura/s" to song categories, perhaps with some sort of weighting
+- Use this data to find the overall "aura" of the listener for the year
