@@ -18,6 +18,7 @@ while True:
     except requests.RequestException:
         continue
 
+
 price = bitcoin.json()["bpi"]["USD"]["rate_float"] * num
 print(f"${price:,.4f}")
 
